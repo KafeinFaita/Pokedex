@@ -1,13 +1,97 @@
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#header {
+  background-color: rgb(240, 134, 134);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid gray;
+  padding: 10px;
+}
+
+#logo {
+  max-width: 300px;
+}
+
+#header ul {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+}
+
+#header ul li {
+  margin: 5px;
+}
+
+#main-body {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  justify-content: center;
+}
+
+.pokemon {
+  width: 20%;
+  text-align: center;
+  margin: 0 10px 20px 10px;
+}
+
+.img-container {
+  background-color: rgb(134, 171, 240);
+}
+
+.desc-container {
+  background-color: #F08686;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: black;
+  padding: 5px;
+}
+
+#buttons {
+  text-align: center;
+  margin: 10px 0 10px 0;
+}
+
+#buttons button {
+  cursor: pointer;
+  margin-right: 5px;
+  padding: 9px;
+  background-color: white;
+  border: 2px solid #F08686;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+  outline: none;
+}
+#buttons button:hover {
+  background-color: #F08686;
+
+}
+
+#dropdown {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#dropdown p {
+  margin-top: 5px;
+}
+
+#footer {
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 2px dotted black;
+  font-family: sans-serif;
 }
