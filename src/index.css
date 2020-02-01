@@ -40,13 +40,24 @@ body {
 }
 
 .pokemon {
-  width: 20%;
+  width: 160px;
+  height: 200px;
+  border: 2px solid gray;
   text-align: center;
   margin: 0 10px 20px 10px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
 }
 
 .img-container {
   background-color: rgb(134, 171, 240);
+  border-radius: 50%;
+  margin-bottom: 10px;
+  flex-basis: 65%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .desc-container {
@@ -56,6 +67,10 @@ body {
   font-weight: bold;
   color: black;
   padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
 }
 
 #buttons {
@@ -68,13 +83,14 @@ body {
   margin-right: 5px;
   padding: 9px;
   background-color: white;
-  border: 2px solid #F08686;
+  border: 2px solid gray;
   border-radius: 50px;
   transition: all 0.3s ease-in-out;
   outline: none;
 }
 #buttons button:hover {
-  background-color: #F08686;
+  background-color: gray;
+  color: white;
 
 }
 

@@ -17,7 +17,7 @@ const PokemonList = ({ url }) => {
     return (       
         <div className="pokemon">
             <div className="img-container">
-                <img src={pokeImage} alt=""/>    
+                {pokeImage ? <img src={pokeImage} alt=""/> : <p style={{fontWeight: 'bold'}}>NO IMAGE AVAILABLE</p>}
             </div> 
             
             <div className="desc-container">

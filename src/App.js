@@ -12,8 +12,6 @@ const App = () => {
   const [nextPage, setNextPage] = useState('');
   const [prevPage, setPrevPage] = useState('');
 
-  let pokeCount = 0;
-
   useEffect(() => {
     fetch(pageUrl).then(res => res.json()).then(data => {
       setPokemonUrl(data.results.map(poke => poke.url))
