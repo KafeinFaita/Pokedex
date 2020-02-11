@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
-import PokemonList from './components/PokemonList';
-import Pagination from './components/Pagination';
-import JumpPage from './components/JumpPage'
+import Main from './components/Main';
 import Footer from './components/Footer'
+import About from './components/About'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 const App = () => {
 
@@ -11,6 +11,7 @@ const App = () => {
   const [pageUrl, setPageUrl] = useState('https://pokeapi.co/api/v2/pokemon/');
   const [nextPage, setNextPage] = useState('');
   const [prevPage, setPrevPage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     fetch(pageUrl).then(res => res.json()).then(data => {
@@ -24,6 +25,7 @@ const App = () => {
     if (!nextPage) {
       setPageUrl('#');
     } else {
+      setIsLoading(true);
       setPageUrl(nextPage);
     }
   }
@@ -32,23 +34,26 @@ const App = () => {
     if (!prevPage) {
       setPageUrl('#');
     } else {
+      setIsLoading(true);
       setPageUrl(prevPage);
     }
   }
 
   const handleJumpPage = (e) => {
+    setIsLoading(true);
     setPageUrl(`https://pokeapi.co/api/v2/pokemon/?offset=${e.target.value * 20}&limit=20`)
   }
 
   return (
     <div id="main">
-      <Navbar />
-      <div id="main-body">
-        {pokemonUrl.map((url, index) => <PokemonList url={url} key={index}/>)}
-      </div>
-      <Pagination next={handleNextPage} prev={handlePrevPage}/>   
-      <JumpPage jump={handleJumpPage}/>
-      <Footer />  
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path="/" exact render={() => <Main pokeUrl={pokemonUrl} loading={isLoading} setLoading={setIsLoading} next={handleNextPage} prev={handlePrevPage} jump={handleJumpPage}/>}/>
+          <Route path="/about" component={About}/>}/>
+        </Switch>
+        <Footer />  
+      </Router>
 
     </div>
   )
