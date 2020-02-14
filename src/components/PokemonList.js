@@ -8,6 +8,7 @@ const PokemonList = ({ url, loading, setLoading}) => {
 
     useEffect(() => {
         setLoading(true);
+        setPokeImage('');
 
         fetch(url).then(res => res.json()).then(data => {
             setPokeImage(data.sprites.front_default);
