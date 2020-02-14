@@ -40,8 +40,11 @@ const App = () => {
   }
 
   const handleJumpPage = (e) => {
-    setIsLoading(true);
-    setPageUrl(`https://pokeapi.co/api/v2/pokemon/?offset=${e.target.value * 20}&limit=20`)
+    const newUrl = `https://pokeapi.co/api/v2/pokemon/?offset=${e.target.value * 20}&limit=20`;
+    if (pageUrl !== newUrl) {
+      setIsLoading(true);
+      setPageUrl(newUrl);
+    }
   }
 
   return (
