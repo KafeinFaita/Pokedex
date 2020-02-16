@@ -3,21 +3,26 @@ import Navbar from './components/Navbar';
 import Main from './components/Main';
 import Footer from './components/Footer'
 import About from './components/About'
+import PokemonCard from './components/PokemonCard'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 const App = () => {
 
   const [pokemonUrl, setPokemonUrl] = useState([]);
+  const [pokeName, setPokeName] = useState([]);
   const [pageUrl, setPageUrl] = useState('https://pokeapi.co/api/v2/pokemon/');
   const [nextPage, setNextPage] = useState('');
   const [prevPage, setPrevPage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  
+  const names = pokeName.map(name => <Route path={`/${name}`} exact component={PokemonCard}/>)
 
   useEffect(() => {
     fetch(pageUrl).then(res => res.json()).then(data => {
-      setPokemonUrl(data.results.map(poke => poke.url))
-      setNextPage(data.next)
-      setPrevPage(data.previous)
+      setPokemonUrl(data.results.map(poke => poke.url));
+      setPokeName(data.results.map(poke => poke.name))
+      setNextPage(data.next);
+      setPrevPage(data.previous);
     })
   }, [pageUrl])
 
@@ -53,7 +58,8 @@ const App = () => {
         <Navbar />
         <Switch>
           <Route path="/" exact render={() => <Main pokeUrl={pokemonUrl} loading={isLoading} setLoading={setIsLoading} next={handleNextPage} prev={handlePrevPage} jump={handleJumpPage}/>}/>
-          <Route path="/about" component={About}/>}/>
+          <Route path="/about" exact component={About}/>}/>
+          {names}
         </Switch>
         <Footer />  
       </Router>
