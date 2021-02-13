@@ -58,7 +58,7 @@ const App = () => {
         <Navbar />
         <Switch>
           <Route path="/" exact render={() => <Main pokeUrl={pokemonUrl} loading={isLoading} setLoading={setIsLoading} next={handleNextPage} prev={handlePrevPage} jump={handleJumpPage}/>}/>
-          <Route path="/about" exact component={About}/>}/>
+          <Route path="/about" exact component={About}/>
           {names}
         </Switch>
         <Footer />  
